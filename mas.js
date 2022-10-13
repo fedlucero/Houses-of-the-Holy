@@ -2,7 +2,7 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 function random(min, max) {
-  return Math.floor((fxrand() * (max - min + 1)) + min);
+  return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
 
@@ -93,7 +93,7 @@ const paleta = randomFromList(paletas);
 const colorTronco = `#212529`
 
 function randomFromList(items){
-    return items[Math.floor(fxrand()*items.length)];
+    return items[Math.floor(Math.random()*items.length)];
     }
 
 a = random(10,25)
@@ -114,18 +114,17 @@ o = random(0.4,0.8)
 xs = random(100,900)
 ys  = random(50,400)
 tams = random(6,30)
-def = fxrand()
+def = Math.random()
 t = random(0,310)
 di = random(1,5)
 
-
-fxpreview() 
-
+generate()
+function generate(){
+  const paleta = randomFromList(paletas);
 createBackground()
 createOverlay(paleta[0], 1, 2, m, f);
 createTree()
-fxpreview()
-
+}
 
 
 
@@ -171,12 +170,12 @@ function createTree(centerX, inY, length, angle, depth, branchWidth) {
   if(!newDepth) {
     return;
   }
-  subBranches = (fxrand() * (maxBranch -1.3)) +1.3;
+  subBranches = (Math.random() * (maxBranch -1.3)) +1.3;
   branchWidth *= 0.8;
 
   for (var i = 0; i < subBranches; i++) {
-    newAngle = angle + fxrand() * maxAngle - maxAngle * 0.5;
-    newLength = length * (0.7 + fxrand() * 0.3);
+    newAngle = angle + Math.random() * maxAngle - maxAngle * 0.5;
+    newLength = length * (0.7 + Math.random() * 0.3);
     
     createTree(endX, endY, newLength, newAngle, newDepth, branchWidth);
   }
@@ -379,21 +378,21 @@ function createOverlay(color, filling, saw, hard,alto) {
     var bol2 = random(50,800)
     var bol3 = random(50,800)
     var r = random(50,800)
-    var postes = fxrand()
+    var postes = Math.random()
     var casa = random(50,700)
     var otraCasa= random(200,700)
-    var casas = fxrand()
-    var arboles = fxrand()
+    var casas = Math.random()
+    var arboles = Math.random()
 
     var x,
 height = 0.6 * maxHeight, 
-slope = (fxrand() * saw) * 2 - saw;
+slope = (Math.random() * saw) * 2 - saw;
 
 for (x = 0; x < canvas.width; x++) {
 
 height += slope * 0.25;
 
-slope += (fxrand() * hard) * 2 - hard;
+slope += (Math.random() * hard) * 2 - hard;
 
 if (slope > saw) {
   slope = saw;
